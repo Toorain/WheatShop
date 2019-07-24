@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block contentItem %}
+	{% for strain in strains %}
+		{% if ref == strain.ref %}
+			<div class="container mt-5">
+				<div class="card mb-3" style="max-height: 450px;">
+				  <div class="row no-gutters">
+				    <div class="col-md-4">
+				      <img src="./public/img/{{ strain.img }}" class="card-img" alt="{{ strain.name }}">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 class="card-title">{{ strain.name }} | {{ strain.price }} €</h5>
+				        <p class="card-text">{{ strain.description }}</p>				        
+			          <div class="row align-items-center justify-content-center">
+			          	<form action="" method="" class="col-sm-2">
+			            <input id="itemscount" type="number" class="form-control text-center" value="1">
+			          </form>
+				        <a href="" type="button" class="btn btn-lg resize-icon d-flex col-sm-4">
+							  	<button class="btn btn-outline-success">ADD TO CART</button>
+								</a>
+								</div>												        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

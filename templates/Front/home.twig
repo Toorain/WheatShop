@@ -1,0 +1,49 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+	<div class="container-fluid">
+	<div class="d-flex flex-wrap justify-content-around align-items-center h-100" id="mainPage">
+		{% set j = 1 %}
+		{% for category in categories %}
+		<div class="card" style="width: 18rem;">
+		  <div class="bd-example">
+			  <div id="carousel{{ category.name }}" class="carousel slide" data-interval="false">
+			    <ol class="carousel-indicators">
+			      <li data-target="#carousel{{ category.name }}" data-slide-to="0" class="active"></li>
+			      <li data-target="#carousel{{ category.name }}" data-slide-to="1"></li>
+			      <li data-target="#carousel{{ category.name }}" data-slide-to="2"></li>
+			    </ol>
+			    <div class="carousel-inner">
+			    {% set i = 0 %}
+		    	{% for strain in strains if strain.strain_name == category.name and i < 3 %}
+		    		<div class="carousel-item {% if i == 0 %} active {% endif %}">
+			        <a href="?p=item&ref={{ strain.ref }}"><img src="./public/img/{{ strain.img }}" class="d-block w-100" alt="{{ strain.name }}"></a>
+			        <div class="carousel-caption d-none d-md-block">
+			          <h5>{{ strain.name }}</h5>
+			        </div>
+			      </div>
+			      {% set i = i + 1 %}
+		      {% endfor %}
+			    </div>
+			    <a class="carousel-control-prev" href="#carousel{{ category.name }}" role="button" data-slide="prev">
+			      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			      <span class="sr-only">Previous</span>
+			    </a>
+			    <a class="carousel-control-next" href="#carousel{{ category.name }}" role="button" data-slide="next">
+			      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			      <span class="sr-only">Next</span>
+			    </a>
+			  </div>
+			</div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{ category.name }}</h5>
+		    <p class="card-text">{{ category.description }}</p>
+		    <a href="?p={{ category.name }}" class="btn btn-success">Buy {{ category.name }}</a>
+		  </div>
+		</div>
+		{% set j = j + 1 %}
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
+

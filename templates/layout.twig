@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SmartShop - {{ title }}</title>
+        <link rel="stylesheet" href="public/css/style.css">
+        <link rel="author" href="humans.txt">
+        {% include "Front/bootstrap.twig" %}
+    </head>
+    <body>
+        {% include "Front/header.twig" %}
+    	{% block content %}{% endblock %}
+        {% block contentLogin %}{% endblock %}
+        {% block contentAccount %}{% endblock %}
+        {% block contentBasket %}{% endblock %}
+        {% block contentSativa %}{% endblock %}
+        {% block contentIndica %}{% endblock %}
+        {% block contentHybrid %}{% endblock %}
+        {% block contentItem %}{% endblock %}
+        {% block contentAllStrains %}{% endblock %} 
+		{% include "Front/footer.twig" %}
+    </body>
+</html>
