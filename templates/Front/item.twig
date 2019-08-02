@@ -14,12 +14,10 @@
 				        <h5 class="card-title">{{ strain.name }} | {{ strain.price }} €</h5>
 				        <p class="card-text">{{ strain.description }}</p>				        
 			          <div class="row align-items-center justify-content-center">
-			          	<form action="" method="" class="col-sm-2">
-			            <input id="itemscount" type="number" class="form-control text-center" value="1">
-			          </form>
-				        <a href="" type="button" class="btn btn-lg resize-icon d-flex col-sm-4">
-							  	<button class="btn btn-outline-success">ADD TO CART</button>
-								</a>
+			          	<form action="basket.php" method="POST" class="col-sm-6 d-flex justify-content-around">
+										<input name="itemcount" id="itemscount" type="number" class="form-control text-center col-sm-3" value="1">
+										<button name="addCart" class="btn resize-icon col-sm-6 btn-outline-success text-center">ADD TO CART</button>
+									</form>
 								</div>												        
 				      </div>
 				    </div>
