@@ -1,6 +1,11 @@
 {% extends 'layout.twig' %}
 
 {% block contentItem %}
+{% if addedToCart %}
+	<div class="alert alert-success success-alert" role="alert">
+		The item has been added to the cart
+	</div>
+{% endif %}
 	{% for strain in strains %}
 		{% if ref == strain.ref %}
 			<div class="container mt-5">
@@ -14,7 +19,12 @@
 				        <h5 class="card-title">{{ strain.name }} | {{ strain.price }} €</h5>
 				        <p class="card-text">{{ strain.description }}</p>				        
 			          <div class="row align-items-center justify-content-center">
-			          	<form action="basket.php" method="POST" class="col-sm-6 d-flex justify-content-around">
+			          	<form action="addBasket.php" method="POST" class="col-sm-6 d-flex justify-content-around">
+										<input type="hidden" name="itemId" value="{{ strain.id }}">
+										<input type="hidden" name="itemRef" value="{{ strain.ref }}">
+										<input type="hidden" name="itemName" value="{{ strain.name }}">
+										<input type="hidden" name="itemImg" value="{{ strain.img }}">
+										<input type="hidden" name="itemPrice" value="{{ strain.price }}">
 										<input name="itemcount" id="itemscount" type="number" class="form-control text-center col-sm-3" value="1">
 										<button name="addCart" class="btn resize-icon col-sm-6 btn-outline-success text-center">ADD TO CART</button>
 									</form>

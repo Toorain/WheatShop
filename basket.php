@@ -1,3 +1,0 @@
-<?php
-
-$basket = new basket();

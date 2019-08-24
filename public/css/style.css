@@ -71,7 +71,7 @@ html, body{
 	max-width: 200px;
 }
 
-#basket-items img{
+.basket-items img{
 	width: 80px;
 	height: 80px;
 }

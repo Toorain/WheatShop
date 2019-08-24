@@ -1,7 +1,11 @@
 {% extends 'layout.twig' %}
 
 {% block contentBasket %}
-
+{% if itemDelete %}
+	<div class="alert alert-danger success-alert" role="alert">
+		The item has been erased from the cart
+	</div>
+{% endif %}
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
   <table id="cart" class="table table-hover table-condensed">
@@ -14,40 +18,46 @@
         <th style="width:10%"></th>
       </tr>
     </thead>
-    <tbody id="basket-items">
+    <tbody class="basket-items">
+    {% for item in basketItems %}    
       <tr>
         <td data-th="Product">
-          <div class="row">
+          <div class="row" id="row{{ item['id'] }}">
             <div class="col-sm-6 hidden-xs">
-              <img src="./public/img/" alt="" class="img-responsive" />
+              <img src="./public/img/{{ item['img'] }}" alt="" class="img-responsive" />
             </div>
             <div class="col-sm-6">
               <h4 class="nomargin"></h4>
-              <p></p>
+              <h5>{{ item['name'] }}</h5>
+              <p>{{ item['ref'] }}</p>
             </div>
           </div>
         </td>
-        <td data-th="Price"></td>
+        <td data-th="Price">{{ item['price'] }} €</td>
         <td data-th="Quantity">
           <form action="" method="">
-            <input id="itemscount" type="number" class="form-control text-center" value="1">
+            <input id="itemscount" type="number" class="form-control text-center" value="{{ item['qte'] }}">
           </form>          
         </td>
-        <td data-th="Subtotal" class="text-center"></td>
+        <td data-th="Subtotal" class="text-center">{{ item['price'] * item['qte'] }} € </td>
         <td class="actions" data-th="">
-          <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-          <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+          <a href="" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></a>
+          <form action="delProduct.php" method="POST">            
+            <input type='submit' class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></input>
+            <input type="hidden" name="itemRef" value='{{ item['ref'] }}'>
+          </form>
         </td>
-      </tr>
+      </tr>    
+    {% endfor %}
     </tbody>
     <tfoot>
       <tr class="visible-xs">
-        <td class="text-center"><strong>Total 1.99</strong></td>
+        <td class="text-center"><strong>Total : 1.99</strong></td>
       </tr>
       <tr>
-        <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+        <td><a href="?p=strains" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
         <td colspan="1" class="hidden-xs"></td>
-        <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+        <td class="hidden-xs text-center"><strong>Total : $1.99</strong></td>
         <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
       </tr>
     </tfoot>

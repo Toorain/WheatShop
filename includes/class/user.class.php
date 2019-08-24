@@ -8,6 +8,7 @@ class user
 	private $_login;
 	private $_name;
 	private $_mdp;
+	private $_basket;
 
 	private $_loginAutorise = [
 		["login" => "moi@moi.moi", "mdp" => "moi", "name" => "moi"],
@@ -15,13 +16,14 @@ class user
 		["login" => "elle@elle.elle", "mdp" => "elle", "name" => "elle"]
 	];
 
-	function __construct($login, $mdp, $name = "")
+	function __construct($login, $mdp, $name = "", $basket=[])
 	{
 		# code...
 		$this->_id = null;
 		$this->_name = $name;
 		$this->_login = $login;
 		$this->_mdp = $mdp;
+		$this->_basket = $basket;
 	}
 
 	function __get($name){
