@@ -4,10 +4,10 @@ require_once 'database/show.php';
 require_once 'includes/Autoloader.php';
 Autoloader::register();
 //Démarrage de la session
-session_start();
-echo '<pre>';
-var_dump($_SESSION['User']);
-echo '</pre>';
+// session_start();
+// echo '<pre>';
+// var_dump($_SESSION['User']);
+// echo '</pre>';
 // Basket content of the session.
 if (!empty($_SESSION)) {
 	$basketContent = $_SESSION['User']['basket'];
