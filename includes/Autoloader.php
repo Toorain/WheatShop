@@ -21,3 +21,5 @@ class Autoloader{
     }
 
 }
+
+Autoloader::register();

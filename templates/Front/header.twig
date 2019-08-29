@@ -1,29 +1,26 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-        <a class="navbar-brand" href="?p=home"><img alt="Smart Shop Logo" id="smartShopLogo" src="./public/img/smartShop.png"></a>
-        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="?p=Sativa">Parfumee</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?p=Indica">Belle</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?p=Hybrid">Gentille</a>
-                </li>
-            </ul>
-            <a class="btn btn-outline-success my-2 my-sm-0 mr-auto" href="?p=strains" role="button">Buy Plants</a>
-            <a class="btn btn-lg resize-icon" href="?p=basket" type="button">
-                <span aria-hidden="true" class="glyphicon"><img alt="weed basket" src="./public/img/weedBasket.png"></span>
-            </a>            
-            <a class="btn btn-outline-success ml-3 my-2 my-sm-0" href="{% if session %}logout.php{% else %}?p=login{% endif %}" role="button">{% if session %}Log out{% else %}Log in{% endif %}
-             </a>
-            {% if session %}<a class="btn btn-outline-success my-2 my-sm-0 ml-3" href="?p=account" role="button">My Account</a>{% else %}{% endif %}
-        </div>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <a class="navbar-brand" href="?p=home"><img alt="Smart Shop Logo" id="smartShopLogo" src="./public/img/smartShop.png"></a>    
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto"></ul>
+      <ul class="navbar-nav">
+        <li><a class="btn btn-outline-success my-2 my-sm-0 ml-auto mr-auto" href="?p=strains" role="button">Buy Plants</a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li><a class="btn btn-outline-success mr-lg-3 h-100" href="?p=basket" type="button"><i class="fas fa-shopping-cart mt-1"></i></a>
+        </li>
+        <li><a class="btn btn-outline-success ml-auto my-2 my-sm-0 mr-lg-3" href="{% if session %}logout.php{% else %}?p=login{% endif %}" role="button">
+          {% if session %}Log out{% else %}Log in{% endif %}
+        </a></li>
+        {% if session %}
+          <li><a class="btn btn-outline-success my-2 my-sm-0 mr-lg-3" href="?p=account" role="button">My Account</a></li>
+          {% else %}
+          <li><a class="btn btn-outline-secondary" href="?p=register">Register</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
 </header>

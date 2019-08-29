@@ -41,10 +41,10 @@
         </td>
         <td data-th="Subtotal" class="text-center">{{ item['price'] * item['qte'] }} € </td>
         <td class="actions" data-th="">
-          <a href="" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></a>
+          <button href="" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
           <form action="delProduct.php" method="POST">            
-            <input type='submit' class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></input>
             <input type="hidden" name="itemRef" value='{{ item['ref'] }}'>
+            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
           </form>
         </td>
       </tr>    

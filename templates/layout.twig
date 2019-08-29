@@ -5,9 +5,9 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SmartShop - {{ title }}</title>
+        <title>SmartShop</title>
         <link rel="stylesheet" href="public/css/style.css">
-        <link rel="author" href="humans.txt">
+        <link rel="author" href="humans.txt">        
         {% include "Front/bootstrap.twig" %}
     </head>
     <body>
@@ -20,7 +20,9 @@
         {% block contentIndica %}{% endblock %}
         {% block contentHybrid %}{% endblock %}
         {% block contentItem %}{% endblock %}
-        {% block contentAllStrains %}{% endblock %} 
+        {% block contentAllStrains %}{% endblock %}
+        {% block register %}{% endblock %} 
 		{% include "Front/footer.twig" %}
+        <script src="https://kit.fontawesome.com/fd6d042b55.js"></script>
     </body>
 </html>

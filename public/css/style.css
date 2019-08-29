@@ -15,6 +15,10 @@ html, body{
 	font-weight: bold;
 }
 
+.card{
+  margin-bottom: 50px;
+}
+
 .card-text{
 	height: 100px;
 	overflow: hidden;        

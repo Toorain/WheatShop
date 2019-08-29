@@ -2,7 +2,7 @@
 
 class basket
 { 
-  private $_basketContent;
+  public $_basketContent;
 
   function addProduct($id, $ref, $qte, $img, $price, $name){
 
