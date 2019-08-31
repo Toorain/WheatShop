@@ -1,13 +1,35 @@
 <?php 
 //Démarrage de la session
 session_start();
-
+/**
+ * Autoloads connected
+ */
 require 'vendor/autoload.php';
-require_once 'database/show.php';
 require_once 'includes/Autoloader.php';
+/**
+ * Connects and fetch all the database elements
+ */
 require_once 'database/show.php';
+/**
+ * Check the connexion status 
+ */
 require_once 'isLogged.php';
+/**
+ * Checks the content of basket
+ */
 require_once 'basketVerif.php';
+/**
+ * Returns elements of the session
+ */
+require_once 'session.php';
+/**
+ * Checks if the pass has been updated
+ */
+require_once 'isPassUpdated.php';
+
+// echo '<pre>';
+// var_dump($session);
+// echo '</pre>';
 
 $ref = '';
 if (isset($_GET['ref'])) {
@@ -44,7 +66,7 @@ switch ($page) {
 	echo $twig->render('Front/login.twig', ['getLogin' => $page]);
 	break;	
 	case 'account':
-	echo $twig->render('Front/account.twig');
+	echo $twig->render('Front/account.twig', ['session' => $session, 'passUpdated' => $passUpdated]);
 	break;
 	case 'basket':
 	echo $twig->render('Front/basket.twig', ['strains' => $data,

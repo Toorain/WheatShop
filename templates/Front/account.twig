@@ -1,25 +1,58 @@
 {% extends 'layout.twig' %}
 
 {% block contentAccount %}
-<div class="container-fluid">	
-	<div class="row d-flex justify-content-around flex-wrap">
-		{% set i = 0 %}
-		{% for i in 0..3 %}
-		<div class="card mb-3" style="max-width: 540px;">
-		  <div class="row no-gutters">
-		    <div class="col-md-4">
-		      <img src="..." class="card-img" alt="...">
-		    </div>
-		    <div class="col-md-8">
-		      <div class="card-body">
-		        <h5 class="card-title">Card title</h5>
-		        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		{% set i = i + 1 %}
-		{% endfor %}
-	</div>	
-{% endblock %}
+  {% if passUpdated == 'updated' %}
+    <div class="alert alert-success success-alert" role="alert">
+      <p>Your password has been updated</p>
+    </div>
+  {% endif %} 
+  <div class="container-fluid">
+       
+    <div class="row d-flex justify-content-around flex-wrap">
+      <div class="card m-2" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md">
+            <form action="newPassword.php" method="post">
+              <div class="form-row">
+                <div class="col-md-5 m-auto">
+                  <label for="firstName">First name :</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="First Name" value="{{ session.name }}">
+                  <div class="invalid-feedback">                    
+                  </div>
+                </div>
+              </div>
+							<div class="form-row mt-3 mb-4">
+                <div class="col-md-5 m-auto">
+                  <label for="password">New Password</label>
+                  <input type="text" class="form-control" id="password" placeholder="Password" name="newPass" required>
+                  <div class="invalid-feedback">
+                    New password invalid
+                  </div>
+                </div>
+                <div class="col-md-5 m-auto">
+                  <label for="passwordCheck">Re-enter new password</label>
+                  <input type="text" class="form-control" id="passwordCheck" placeholder="Password" name="newPassCheck" required>
+                  <div class="invalid-feedback">
+                    New password invalid
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input needs-validation" type="checkbox" value="" id="invalidCheck3" required>
+                  <label class="form-check-label" for="invalidCheck3">
+                    Agree to terms and conditions
+                  </label>
+                  <div class="invalid-feedback">
+                    You must agree before submitting.
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit">Submit form</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

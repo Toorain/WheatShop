@@ -1,14 +1,15 @@
 <?php
 session_start();
+require_once 'database/show.php';
 require_once 'includes/Autoloader.php';
 Autoloader::register();
 
-
+$auth;
 $mail = $_POST['mail'];
 $pass = $_POST['pass'];
 
-$user = new user($mail, $pass);
-$userVerif = $user->verifAutorisation();
+$user = new user($auth, $mail, $pass);
+$userVerif = $user->verifAutorisation($mail, $pass);
 
 if ($userVerif) {
     $_SESSION['User']['login'] = $user->_login;

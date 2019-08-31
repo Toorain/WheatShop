@@ -4,26 +4,17 @@
  */
 class user
 {
-	private $_id;
 	private $_login;
-	private $_name;
 	private $_mdp;
-	private $_basket;
+	private $_auth;
+	private $_name;
+	private $_oldPass;
 
-	private $_loginAutorise = [
-		["login" => "moi@moi.moi", "mdp" => "moi", "name" => "moi"],
-		["login" => "toi@toi.toi", "mdp" => "toi", "name" => "toi"],
-		["login" => "elle@elle.elle", "mdp" => "elle", "name" => "elle"]
-	];
-
-	function __construct($login, $mdp, $name = "", $basket=[])
+	function __construct($auth, $mail, $pass)
 	{
-		# code...
-		$this->_id = null;
-		$this->_name = $name;
-		$this->_login = $login;
-		$this->_mdp = $mdp;
-		$this->_basket = $basket;
+		$this->_auth = $auth;
+		$this->_login = $mail;
+		$this->_mdp = $pass;
 	}
 
 	function __get($name){
@@ -34,14 +25,35 @@ class user
 		$this->$name = $value;
 	}
 
-	function verifAutorisation(){
-		foreach ($this->_loginAutorise as $user) {
-			if($user['login'] == $this->_login && $user['mdp'] == $this->_mdp){
-				$this->_name = $user['name'];
+	function verifAutorisation($mail, $pass){
+		foreach ($this->_auth as $user) {
+			if($user['login'] == $this->_login && $user['pass'] == $this->_mdp){
+				$this->_name = $user['firstname'];
 				return true;
 			}
 		}
 		return false;
+	}
+
+	function changePassword($conn, $login, $oldPass, $newPass){
+		foreach ($this->_auth as $user) {
+			/**
+			 * If login and pass are found in the DB
+			 */
+			if ($user['login'] == $login && $user['pass'] == $oldPass) {
+				/**
+				 * We prepare the update of table Auth
+				 */
+				$sql = "UPDATE Auth SET pass=? WHERE login=?";
+				$req = $conn->prepare($sql);
+				$req->execute([$newPass, $login]);
+				/**
+				 * And we reset $_SESSION pass to the newPass value
+				 */
+				$_SESSION['User']['pass'] = $newPass;
+				header("Location: index.php?p=account&pass=updated");
+			}
+		}
 	}
 
 }
