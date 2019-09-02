@@ -27,9 +27,6 @@ require_once 'session.php';
  */
 require_once 'isPassUpdated.php';
 
-// echo '<pre>';
-// var_dump($session);
-// echo '</pre>';
 
 $ref = '';
 if (isset($_GET['ref'])) {
@@ -63,7 +60,7 @@ switch ($page) {
 	echo $twig->render('Front/home.twig', ['strains' => $data, 'categories' => $cat]);
 	break;
 	case 'login':
-	echo $twig->render('Front/login.twig', ['getLogin' => $page]);
+	echo $twig->render('Front/login.twig', ['getLogin' => $page, 'connStatus' => $connStatus]);
 	break;	
 	case 'account':
 	echo $twig->render('Front/account.twig', ['session' => $session, 'passUpdated' => $passUpdated]);
@@ -73,14 +70,14 @@ switch ($page) {
 																					 'basketItems' => $basketContent,
 																					 'itemDelete' => $itemDelete ]);
 	break;
-	case 'Sativa':
-	echo $twig->render('Front/sativa.twig', ['strains' => $data]);
+	case 'Parfumée':
+	echo $twig->render('Front/parfumee.twig', ['strains' => $data]);
 	break;
-	case 'Indica':
-	echo $twig->render('Front/indica.twig', ['strains' => $data]);
+	case 'Belle':
+	echo $twig->render('Front/belle.twig', ['strains' => $data]);
 	break;
-	case 'Hybrid':
-	echo $twig->render('Front/hybrid.twig', ['strains' => $data]);
+	case 'Gentille':
+	echo $twig->render('Front/gentille.twig', ['strains' => $data]);
 	break;
 	case 'strains':
 	echo $twig->render('Front/strains.twig', ['strains' => $data]);

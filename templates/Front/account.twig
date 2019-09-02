@@ -5,9 +5,12 @@
     <div class="alert alert-success success-alert" role="alert">
       <p>Your password has been updated</p>
     </div>
+  {% elseif passUpdated == 'diff' %}
+    <div class="alert alert-danger success-alert" role="alert">
+      <p>Your passwords don't match</p>
+    </div>      
   {% endif %} 
-  <div class="container-fluid">
-       
+  <div class="container-fluid">       
     <div class="row d-flex justify-content-around flex-wrap">
       <div class="card m-2" style="max-width: 540px;">
         <div class="row no-gutters">

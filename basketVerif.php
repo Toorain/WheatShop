@@ -7,9 +7,13 @@ if (!empty($_SESSION)) {
 	$basketContent = [];
 }
 // Checks if something was added to the basket
-$addedToCart = false;
+$addedToCart = '';
 if (isset($_GET['item'])) {
-	$addedToCart = true;
+	if ($_GET['item'] == 'added') {
+		$addedToCart = 'added';
+	} else if ($_GET['item'] == 'notlogged') {
+		$addedToCart = 'notlogged';
+	}
 }
 
 //Check if something is deleted from the basket

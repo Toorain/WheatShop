@@ -13,7 +13,12 @@ $itemName = $_POST['itemName'];
 $img = $_POST['itemImg'];
 $price = $_POST['itemPrice'];
 
-$basket = new basket;
-$_SESSION['User']['basket'] = $basket->addProduct($id, $itemRef, $itemQte, $img, $price, $itemName);
-// $addItemBasket = array_push(, $addBasket);
-header("Location: index.php?p=item&ref=" . $itemRef . "&item=added");
+if (!empty($_SESSION)) {
+  $basket = new basket;
+  $_SESSION['User']['basket'] = $basket->addProduct($id, $itemRef, $itemQte, $img, $price, $itemName);
+  // $addItemBasket = array_push(, $addBasket);
+  header("Location: index.php?p=item&ref=" . $itemRef . "&item=added");
+} else {
+  header("Location: index.php?p=item&ref=" . $itemRef . "&item=notlogged");
+}
+

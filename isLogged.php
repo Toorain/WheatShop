@@ -18,3 +18,8 @@ if (isset($_GET['logs'])) {
 			break;
 	}
 }
+
+$connStatus = '';
+if (isset($_GET['conn'])) {
+	$connStatus = $_GET['conn'];
+}

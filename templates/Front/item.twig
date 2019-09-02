@@ -1,9 +1,13 @@
 {% extends 'layout.twig' %}
 
 {% block contentItem %}
-{% if addedToCart %}
+{% if addedToCart == 'added' %}
 	<div class="alert alert-success success-alert" role="alert">
-		The item has been added to the cart
+		The item has been added to the cart.
+	</div>
+{% elseif addedToCart == 'notlogged' %}
+	<div class="alert alert-warning success-alert" role="alert">
+		Please log-in before adding something to cart.
 	</div>
 {% endif %}
 	{% for strain in strains %}

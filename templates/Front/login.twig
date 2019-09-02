@@ -1,6 +1,11 @@
 {% extends 'layout.twig' %}
 
 {% block contentLogin %}
+{% if connStatus == 'failed' %}
+  <div class="alert alert-danger success-alert" role="alert">
+    <p>Wrong login or password</p>
+  </div>
+{% endif %} 
 <div class="container-fluid">
   <form class="col-sm-4 m-auto" action="././traitementLogin.php" method="POST">
     <div class="form-group">
