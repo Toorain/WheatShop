@@ -38,6 +38,19 @@ class basket
     return $this->_basketContent;
   }
 
+  function refreshProduct($ref, $newQte) {
+    $this->_basketContent = $_SESSION['User']['basket'];    
+
+    foreach ($this->_basketContent as $key => $product) {      
+      if ($product['ref'] === $ref) {
+        // $replace = array('qte' => $newQte);
+        // $arrayreplace = array_replace($product, $replace);
+        $this->_basketContent[$key]['qte'] = $newQte;
+      }
+    }
+    return $this->_basketContent;
+  }
+
   function __set($name, $value){
     $this->$name = $value;
   }

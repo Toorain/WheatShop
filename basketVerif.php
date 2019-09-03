@@ -13,8 +13,11 @@ if (isset($_GET['item'])) {
 		$addedToCart = 'added';
 	} else if ($_GET['item'] == 'notlogged') {
 		$addedToCart = 'notlogged';
+	} else if ($_GET['item'] == 'updated'){
+		$addedToCart = 'updated';
 	}
 }
+
 
 //Check if something is deleted from the basket
 $itemDelete = false;

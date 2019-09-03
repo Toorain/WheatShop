@@ -6,6 +6,11 @@
 		The item has been erased from the cart
 	</div>
 {% endif %}
+{% if addedToCart == 'updated' %}
+	<div class="alert alert-warning warning-alert" role="alert">
+		The item quantity has been updated
+	</div>
+{% endif %}
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
   <table id="cart" class="table table-hover table-condensed">
@@ -35,16 +40,18 @@
         </td>
         <td data-th="Price">{{ item['price'] }} €</td>
         <td data-th="Quantity">
-          <form action="" method="">
-            <input id="itemscount" type="number" class="form-control text-center" value="{{ item['qte'] }}">
-          </form>          
-        </td>        
-        <td data-th="Subtotal" class="text-center">        
+          <form action="refreshBasket.php" method="post">    
+            <input id="itemscount" type="number" class="form-control text-center" name="itemqte" value="{{ item['qte'] }}"
+            style="{% if addedToCart == 'updated' %}background-color: #ffe496{% endif %}">
+            <input type="hidden" name="itemRef" value='{{ item['ref'] }}'>
+        </td>
+        <td data-th="Subtotal" class="text-center">
         {% set totalItem = item['price'] * item['qte'] %}
         {{ totalItem }} € </td>
         <td class="actions" data-th="">
-          <button href="" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-          <form action="delProduct.php" method="POST">            
+            <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+          </form>
+          <form action="delProduct.php" method="POST">
             <input type="hidden" name="itemRef" value='{{ item['ref'] }}'>
             <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
           </form>
@@ -56,7 +63,7 @@
       <tr>
         <td><a href="?p=strains" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
         <td colspan="1" class="hidden-xs"></td>
-        <td class="hidden-xs text-center"><strong>Total : 
+        <td class="hidden-xs col-md-12 col-xl-2 text-center"><strong>Total : 
         {% set total = 0 %}
         {% for price in basketItems %}
           {% set total = total + (price['price'] * price['qte']) %}          
@@ -67,5 +74,4 @@
     </tfoot>
   </table>
 </div>
-
 {% endblock %}

@@ -27,6 +27,9 @@ require_once 'session.php';
  */
 require_once 'isPassUpdated.php';
 
+// echo '<pre>';
+// var_dump($_SESSION['User']);
+// echo '</pre>';
 
 $ref = '';
 if (isset($_GET['ref'])) {
@@ -68,7 +71,8 @@ switch ($page) {
 	case 'basket':
 	echo $twig->render('Front/basket.twig', ['strains' => $data,
 																					 'basketItems' => $basketContent,
-																					 'itemDelete' => $itemDelete ]);
+																					 'itemDelete' => $itemDelete,
+																					 'addedToCart' => $addedToCart]);
 	break;
 	case 'Parfumée':
 	echo $twig->render('Front/parfumee.twig', ['strains' => $data]);
@@ -83,7 +87,7 @@ switch ($page) {
 	echo $twig->render('Front/strains.twig', ['strains' => $data]);
 	break;
 	case 'item':
-	echo $twig->render('Front/item.twig', ['strains' => $data, 'ref' => $ref, 'addedToCart' => $addedToCart ]);
+	echo $twig->render('Front/item.twig', ['strains' => $data, 'ref' => $ref, 'addedToCart' => $addedToCart]);
 	break;
 	case 'register':
 	echo $twig->render('Front/register.twig', ['logged' => $logged]);
