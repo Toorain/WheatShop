@@ -72,6 +72,7 @@ switch ($page) {
 	case 'account':
 	echo $twig->render('Front/account.twig', ['session' => $session,
 																						'passUpdated' => $passUpdated,
+																						'strains' => $data,
 																						'isAdmin' => $isAdmin]);
 	break;
 	case 'basket':

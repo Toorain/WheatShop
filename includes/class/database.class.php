@@ -16,13 +16,13 @@ class database
   }
 
   // If it doesn't exists in the Database, we create it with a SQL request.
-  public function createEntry($conn, $firstName, $lastName, $login, $pass, $city){
+  public function createEntry($conn, $firstName, $lastName, $admin, $login, $pass, $city){
     if ($this->_alreadyExists == false ) {
       if ($firstName == '' || $lastName == '' || $login == '') {
         header('Location: index.php?p=register&logs=missing'); 
       } else {
-        $sql = "INSERT INTO Auth (login, pass, firstname, lastname, city)
-      VALUES ('$login', '$pass', '$firstName', '$lastName', '$city')";
+        $sql = "INSERT INTO Auth (login, admin, pass, firstname, lastname, city)
+      VALUES ('$login', '$admin', '$pass', '$firstName', '$lastName', '$city')";
         // Comment out for debug purpose
         if ($conn->query($sql) == true) {
             // echo "New record created successfully";

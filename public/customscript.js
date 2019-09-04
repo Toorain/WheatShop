@@ -3,3 +3,7 @@
         $("#success-alert").slideUp(500);
       });
   });
+
+  $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
