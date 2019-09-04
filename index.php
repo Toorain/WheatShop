@@ -26,6 +26,10 @@ require_once 'session.php';
  * Checks if the pass has been updated
  */
 require_once 'isPassUpdated.php';
+/**
+ * Checks if User is an Admin
+ */
+require_once 'verifAdmin.php';
 
 // echo '<pre>';
 // var_dump($_SESSION['User']);
@@ -60,19 +64,22 @@ if (isset($_GET['p'])) {
 
 switch ($page) {
 	case 'home':
-	echo $twig->render('Front/home.twig', ['strains' => $data, 'categories' => $cat]);
+	echo $twig->render('Front/home.twig', ['strains' => $data, 'categories' => $cat, 'isAdmin' => $isAdmin]);
 	break;
 	case 'login':
 	echo $twig->render('Front/login.twig', ['getLogin' => $page, 'connStatus' => $connStatus]);
 	break;	
 	case 'account':
-	echo $twig->render('Front/account.twig', ['session' => $session, 'passUpdated' => $passUpdated]);
+	echo $twig->render('Front/account.twig', ['session' => $session,
+																						'passUpdated' => $passUpdated,
+																						'isAdmin' => $isAdmin]);
 	break;
 	case 'basket':
 	echo $twig->render('Front/basket.twig', ['strains' => $data,
 																					 'basketItems' => $basketContent,
 																					 'itemDelete' => $itemDelete,
-																					 'addedToCart' => $addedToCart]);
+																					 'addedToCart' => $addedToCart,
+																					 'isAdmin' => $isAdmin]);
 	break;
 	case 'Parfumée':
 	echo $twig->render('Front/parfumee.twig', ['strains' => $data]);
@@ -84,10 +91,14 @@ switch ($page) {
 	echo $twig->render('Front/gentille.twig', ['strains' => $data]);
 	break;
 	case 'strains':
-	echo $twig->render('Front/strains.twig', ['strains' => $data]);
+	echo $twig->render('Front/strains.twig', ['strains' => $data,
+																						'isAdmin' => $isAdmin]);
 	break;
 	case 'item':
-	echo $twig->render('Front/item.twig', ['strains' => $data, 'ref' => $ref, 'addedToCart' => $addedToCart]);
+	echo $twig->render('Front/item.twig', ['strains' => $data,
+																				 'ref' => $ref,
+																				 'addedToCart' => $addedToCart,
+																				 'isAdmin' => $isAdmin]);
 	break;
 	case 'register':
 	echo $twig->render('Front/register.twig', ['logged' => $logged]);
