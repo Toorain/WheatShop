@@ -6,7 +6,7 @@ html, body{
     text-align: center;
 }
 
-#allStrains a{
+#allstrains a, #sativa a, #indica a, #hybrid a{
 	color: white !important;
 }
 
