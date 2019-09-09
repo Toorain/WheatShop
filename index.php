@@ -67,7 +67,7 @@ switch ($page) {
 	echo $twig->render('Front/home.twig', ['strains' => $data, 'categories' => $cat, 'isAdmin' => $isAdmin]);
 	break;
 	case 'login':
-	echo $twig->render('Front/login.twig', ['getLogin' => $page, 'connStatus' => $connStatus]);
+	echo $twig->render('Front/login.twig', ['connStatus' => $connStatus]);
 	break;	
 	case 'account':
 	echo $twig->render('Front/account.twig', ['session' => $session,

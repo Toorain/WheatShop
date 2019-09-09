@@ -11,6 +11,9 @@ $pass = $_POST['pass'];
 $user = new user($auth, $mail, $pass);
 $userVerif = $user->verifAutorisation($mail, $pass);
 
+/**
+ * If user is allowed to be connected, we pass it's credetials in session.
+ */
 if ($userVerif) {
     $_SESSION['User']['login'] = $user->_login;
     $_SESSION['User']['pass'] = $user->_mdp;

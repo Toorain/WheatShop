@@ -1,7 +1,5 @@
 <?php 
-/**
- * 
- */
+
 class user
 {
 	private $_login;
@@ -25,7 +23,7 @@ class user
 		$this->$name = $value;
 	}
 
-	function verifAutorisation($mail, $pass){
+	public function verifAutorisation($mail, $pass){
 		foreach ($this->_auth as $user) {
 			if($user['login'] == $this->_login && $user['pass'] == $this->_mdp){
 				$this->_name = $user['firstname'];
@@ -35,7 +33,7 @@ class user
 		return false;
 	}
 
-	function changePassword($conn, $login, $oldPass, $newPass){
+	public function changePassword($conn, $login, $oldPass, $newPass){
 		foreach ($this->_auth as $user) {
 			/**
 			 * If login and pass are found in the DB
